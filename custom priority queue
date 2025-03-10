@@ -1,0 +1,49 @@
+import heapq
+
+class CustomQueue:
+    def __init__(self, mode="priority"):
+        self.mode = mode
+        self.queue = []
+        self.counter = 0  # Used to maintain FIFO order in priority mode
+    
+    def push(self, item, priority=None):
+        if self.mode == "priority":
+            if priority is None:
+                priority = item
+            heapq.heappush(self.queue, (priority, self.counter, item))
+            self.counter += 1
+        elif self.mode == "stack":
+            self.queue.append(item)
+        elif self.mode == "queue":
+            self.queue.insert(0, item)
+        else:
+            raise ValueError("Invalid mode. Choose from 'priority', 'stack', or 'queue'.")
+    
+    def pop(self):
+        if self.is_empty():
+            return "Queue is empty"
+        if self.mode == "priority":
+            return heapq.heappop(self.queue)[2]
+        else:
+            return self.queue.pop()
+    
+    def is_empty(self):
+        return len(self.queue) == 0
+
+# Example Usage
+if __name__ == "__main__":
+    pq = CustomQueue(mode="priority")
+    pq.push("task1", priority=3)
+    pq.push("task2", priority=1)
+    pq.push("task3", priority=2)
+    print(pq.pop())  # Expected: task2 (lowest priority first)
+    
+    stack = CustomQueue(mode="stack")
+    stack.push("a")
+    stack.push("b")
+    print(stack.pop())  # Expected: b (LIFO)
+    
+    queue = CustomQueue(mode="queue")
+    queue.push("x")
+    queue.push("y")
+    print(queue.pop())  # Expected: x (FIFO)
