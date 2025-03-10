@@ -1,0 +1,32 @@
+Project 1 Report - Algorithm Engineering
+Name: Aiden Ferris
+Email: amferris@csu.fullerton.edu
+Course: CPSC 335
+Project: Custom Priority Queue & Robo-Add Algorithm
+
+Algorithm 1: Custom Priority Queue
+The custom priority queue supports three modes:
+Priority Queue Mode: Uses a min-heap (heapq) for ordering.
+Stack Mode: Implements a Last-In-First-Out (LIFO) structure.
+Queue Mode: Implements a First-In-First-Out (FIFO) structure.
+
+Priority Queue Mode:
+push(): O(log n) (heap insertion)
+pop(): O(log n) (heap removal)
+Stack Mode:
+push(): O(1) (list append)
+pop(): O(1) (list pop)
+Queue Mode:
+push(): O(1) (list insert at index 0)
+pop(): O(1) (list pop from the end)
+
+Algorithm 2: Robo-Add (Merging Linked Lists)
+Two linked lists representing reversed numbers are added digit by digit.
+Time Complexity: O(n), where n is the length of the longer linked list (single pass solution).
+Space Complexity: O(n), as a new linked list is created for the result.
+
+Conclusion
+This project demonstrates an efficient implementation of a flexible priority queue and an optimized linked list addition algorithm. 
+
+
+
